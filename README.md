@@ -161,7 +161,7 @@ This project is licensed under the MIT License.
 
 ## 👥 Authors
 
-- Development Team
+- Sanoop
 
 ## 🔗 Related Documentation
 
