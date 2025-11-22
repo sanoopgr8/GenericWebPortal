@@ -29,7 +29,7 @@ graph TD
         HelloCtrl[HelloController]
         Service[Service Layer]
         EmailSvc[EmailService]
-        Repo[UserRepository (JPA)]
+        Repo[UserRepository]
         
         Nginx -- "Proxy /api/* (HTTP Port 8080)" --> Controller
         
@@ -45,7 +45,7 @@ graph TD
     end
 
     subgraph External ["External Services"]
-        SMTP[SMTP Server (Gmail)]
+        SMTP[SMTP Server]
         EmailSvc -- "SMTP (TLS)" --> SMTP
     end
 
