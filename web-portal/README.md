@@ -193,6 +193,7 @@ This project uses **SonarQube** for continuous code quality and security analysi
 ### Setup SonarQube
 For detailed instructions on setting up and using SonarQube analysis, see [SonarQube Documentation](docs/SONARQUBE.md).
 
+
 **Quick Setup:**
 1. Configure `SONAR_TOKEN` and `SONAR_HOST_URL` in GitHub Secrets
 2. Push to `main` or create a pull request

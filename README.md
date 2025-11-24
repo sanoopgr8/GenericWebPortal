@@ -41,10 +41,11 @@ web-portal\setup.bat
 
 ## 📚 Documentation
 
-- **[Architecture](web-portal/docs/architecture/)** - System architecture and design
-- **[Setup Guides](web-portal/docs/setup/)** - Installation and configuration
-- **[Features](web-portal/docs/features/)** - Feature documentation
-- **[Cleanup Summary](web-portal/docs/CLEANUP_SUMMARY.md)** - Project cleanup history
+- **[Architecture](web-portal/docs/architecture/architecture.md)** - System architecture and design
+- **[Setup Guides](web-portal/docs/setup/)** - Installation and configuration guides
+- **[Features](web-portal/docs/features/SIGNUP_IMPLEMENTATION.md)** - Feature documentation
+- **[SonarQube Integration](web-portal/docs/SONARQUBE.md)** - Code quality and analysis setup
+
 
 ## 🏗️ Tech Stack
 
@@ -168,3 +169,5 @@ This project is licensed under the MIT License.
 - [Liquibase Guide](web-portal/docs/setup/LIQUIBASE_GUIDE.md)
 - [Signup Implementation](web-portal/docs/features/SIGNUP_IMPLEMENTATION.md)
 - [Architecture Diagram](web-portal/docs/architecture/architecture.md)
+- [SonarQube Integration](web-portal/docs/SONARQUBE.md)
+
