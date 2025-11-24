@@ -28,7 +28,9 @@ public class AuthController {
 
     @PostMapping("/signup")
     @org.springframework.transaction.annotation.Transactional
-    public ResponseEntity<Map<String, String>> signup(@RequestBody Map<String, String> signupData) {
+    public ResponseEntity<Map<String, String>> signup(
+            @RequestBody Map<String, String> signupData,
+            jakarta.servlet.http.HttpServletRequest request) {
         Map<String, String> response = new HashMap<>();
         
         try {
@@ -98,8 +100,8 @@ public class AuthController {
 
             userRepository.save(user);
 
-            // Send verification email
-            emailService.sendVerificationEmail(user.getEmail(), user.getFirstName(), user.getVerificationToken());
+            // Send verification email with request context
+            emailService.sendVerificationEmail(user.getEmail(), user.getFirstName(), user.getVerificationToken(), request);
 
             response.put("status", "success");
             response.put("message", "Registration successful! Please check your email to verify your account.");

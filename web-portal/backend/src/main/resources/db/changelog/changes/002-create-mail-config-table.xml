@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.20.xsd">
+
+    <changeSet id="002-create-mail-config-table" author="system">
+        <createTable tableName="mail_configs">
+            <column name="id" type="BIGINT">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="host" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="port" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="username" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="password" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="protocol" type="VARCHAR(50)" defaultValue="smtp">
+                <constraints nullable="false"/>
+            </column>
+            <column name="auth" type="BOOLEAN" defaultValueBoolean="true">
+                <constraints nullable="false"/>
+            </column>
+            <column name="starttls" type="BOOLEAN" defaultValueBoolean="true">
+                <constraints nullable="false"/>
+            </column>
+            <column name="from_email" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="from_name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        
+        <!-- Insert default configuration (placeholder) -->
+        <insert tableName="mail_configs">
+            <column name="id" valueNumeric="1"/>
+            <column name="host" value="smtp.example.com"/>
+            <column name="port" valueNumeric="587"/>
+            <column name="username" value="user@example.com"/>
+            <column name="password" value="password"/>
+            <column name="protocol" value="smtp"/>
+            <column name="auth" valueBoolean="true"/>
+            <column name="starttls" valueBoolean="true"/>
+            <column name="from_email" value="noreply@example.com"/>
+            <column name="from_name" value="Web Portal"/>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>
