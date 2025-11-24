@@ -23,13 +23,11 @@ function Home({ user, setUser }) {
     return (
       <div className="container">
         <h1>Web Portal</h1>
-        <div className="card">
-          <Login onLogin={setUser} />
-          <p>Don't have an account?</p>
-          <Link to="/signup">
-            <button>Sign Up</button>
-          </Link>
-        </div>
+        <Login onLogin={setUser} />
+        <p>Don't have an account?</p>
+        <Link to="/signup">
+          <button className="secondary-button">Sign Up</button>
+        </Link>
       </div>
     )
   }
@@ -99,11 +97,9 @@ function SignupPage() {
   return (
     <div className="container">
       <h1>Web Portal</h1>
-      <div className="card">
-        <Signup />
-        <p>Already have an account?</p>
-        <button onClick={() => navigate('/')}>Back to Login</button>
-      </div>
+      <Signup />
+      <p>Already have an account?</p>
+      <button className="secondary-button" onClick={() => navigate('/')}>Back to Login</button>
     </div>
   )
 }

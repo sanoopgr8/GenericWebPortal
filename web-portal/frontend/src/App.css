@@ -177,6 +177,27 @@
   text-align: center;
 }
 
+.container>h1 {
+  margin-bottom: 1rem;
+}
+
+.container>p {
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+  color: var(--text-color);
+  font-size: 0.95rem;
+}
+
+.container>a {
+  width: 100%;
+  max-width: 500px;
+}
+
+.container>button,
+.container>a>button {
+  max-width: 500px;
+}
+
 .card {
   padding: 2.5rem;
   background: var(--card-bg);
