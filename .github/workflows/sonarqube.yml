@@ -97,7 +97,7 @@ jobs:
           fi
 
 
-      # Verify Node.js is accessible and get its path
+      # Verify Node.js is accessible and get its path using npm
       - name: Verify Node.js Installation
         id: node-setup
         run: |
@@ -105,10 +105,11 @@ jobs:
           node --version
           echo "npm version:"
           npm --version
-          echo "Node.js path:"
+          echo "Finding Node.js executable path..."
           NODE_PATH=$(which node)
           echo "NODE_EXECUTABLE=$NODE_PATH" >> $GITHUB_OUTPUT
           echo "Node.js executable: $NODE_PATH"
+          echo "npm prefix: $(npm config get prefix)"
 
 
       # Run SonarCloud analysis
@@ -118,7 +119,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: https://sonarcloud.io
-          SONAR_SCANNER_OPTS: -Dsonar.nodejs.executable=${{ steps.node-setup.outputs.NODE_EXECUTABLE }}
         with:
           args: >-
             -Dsonar.organization=sanoopgr8
@@ -135,6 +135,7 @@ jobs:
             -Dsonar.coverage.exclusions=**/*.test.js,**/*.test.jsx,**/test/**,**/tests/**
             -Dsonar.sourceEncoding=UTF-8
             -Dsonar.scm.provider=git
+            -Dsonar.nodejs.executable=${{ steps.node-setup.outputs.NODE_EXECUTABLE }}
             -Dsonar.verbose=false
 
       # Quality Gate check (optional but recommended)
