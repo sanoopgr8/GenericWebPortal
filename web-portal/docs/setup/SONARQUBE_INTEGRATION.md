@@ -15,7 +15,8 @@
 
 **Configuration Highlights**:
 - Java 17 setup with Maven
-- Node.js 18 setup with npm
+- Java 17 setup with Maven
+- Node.js 20 setup with npm
 - Backend build with `mvn clean verify`
 - Frontend dependency installation
 - Comprehensive SonarQube scan parameters
@@ -113,13 +114,14 @@ To use the SonarQube workflow, configure these secrets in your GitHub repository
 ### Workflow Steps
 1. Checkout code (full history for better analysis)
 2. Setup Java 17 with Maven cache
-3. Setup Node.js 18 with npm cache
+3. Setup Node.js 20 with npm cache
 4. Install frontend dependencies
 5. Build backend with Maven
 6. Cache SonarQube packages
-7. Run SonarQube scan
-8. Check Quality Gate status
-9. Display results
+7. Install SonarScanner (npm)
+8. Run SonarQube scan
+9. Check Quality Gate status
+10. Display results
 
 ## Quality Gate
 
@@ -136,8 +138,8 @@ The workflow includes an optional Quality Gate check that:
    - Add `SONAR_HOST_URL`
 
 2. **Create SonarQube Project**:
-   - Project Key: `web-portal`
-   - Project Name: `Web Portal`
+   - Project Key: `sanoopgr8_GenericWebPortal`
+   - Project Name: `GenericWebPortal`
 
 3. **Test the Workflow**:
    - Push to `main` or create a PR

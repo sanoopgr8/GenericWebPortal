@@ -8,8 +8,8 @@ This project is configured to use **SonarCloud** (not self-hosted SonarQube) for
 
 ### Project Details
 - **Organization**: `sanoopgr8`
-- **Project Key**: `sanoopgr8_webportal`
-- **Project Name**: `WebPortal`
+- **Project Key**: `sanoopgr8_GenericWebPortal`
+- **Project Name**: `GenericWebPortal`
 - **SonarCloud URL**: `https://sonarcloud.io`
 
 ### Configuration Files
@@ -28,8 +28,8 @@ This project is configured to use **SonarCloud** (not self-hosted SonarQube) for
 4. Select your repository: `webportal`
 5. Set up the project:
    - **Organization**: `sanoopgr8` (should be pre-selected)
-   - **Project Key**: `sanoopgr8_webportal`
-   - **Display Name**: `WebPortal`
+   - **Project Key**: `sanoopgr8_GenericWebPortal`
+   - **Display Name**: `GenericWebPortal`
 
 ### 2. Generate SonarCloud Token
 
@@ -61,16 +61,16 @@ The configuration is already set up in the repository:
 <properties>
   <sonar.organization>sanoopgr8</sonar.organization>
   <sonar.host.url>https://sonarcloud.io</sonar.host.url>
-  <sonar.projectKey>sanoopgr8_webportal</sonar.projectKey>
-  <sonar.projectName>WebPortal</sonar.projectName>
+  <sonar.projectKey>sanoopgr8_GenericWebPortal</sonar.projectKey>
+  <sonar.projectName>GenericWebPortal</sonar.projectName>
 </properties>
 ```
 
 **sonar-project.properties** (root):
 ```properties
 sonar.organization=sanoopgr8
-sonar.projectKey=sanoopgr8_webportal
-sonar.projectName=WebPortal
+sonar.projectKey=sanoopgr8_GenericWebPortal
+sonar.projectName=GenericWebPortal
 ```
 
 ## Running Analysis
