@@ -180,6 +180,25 @@ Liquibase manages all database schema changes, ensuring consistent database stat
 - SQL injection prevention via JPA
 - Secure session management
 
+## 📊 Code Quality
+
+This project uses **SonarQube** for continuous code quality and security analysis.
+
+### Static Code Analysis
+- Automated analysis on every push and pull request
+- Detects bugs, vulnerabilities, and code smells
+- Tracks code coverage and technical debt
+- Enforces quality gates for maintainability
+
+### Setup SonarQube
+For detailed instructions on setting up and using SonarQube analysis, see [SonarQube Documentation](docs/SONARQUBE.md).
+
+**Quick Setup:**
+1. Configure `SONAR_TOKEN` and `SONAR_HOST_URL` in GitHub Secrets
+2. Push to `main` or create a pull request
+3. View results in your SonarQube dashboard
+
+
 ## 🌐 Deployment
 
 The application is designed to be deployed behind an Nginx reverse proxy, which handles:
