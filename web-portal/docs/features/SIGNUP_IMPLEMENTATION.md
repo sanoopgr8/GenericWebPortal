@@ -19,16 +19,22 @@
 
 3. **Email Service**
    - `EmailService.java` - Sends verification emails using configured SMTP server
-   - Uses configured SMTP server
+   - Uses configured SMTP server with dynamic configuration
    - Sender: `noreply@example.com` (Your Application)
 
-4. **Enhanced AuthController**
+4. **Password Security**
+   - `PasswordEncoder` bean configured in `SecurityConfig.java` (BCrypt)
+   - `PasswordMigrationService.java` - Automatically migrates legacy plain text passwords on startup
+   - All passwords hashed with BCrypt (work factor: 10) before storage
+
+5. **Enhanced AuthController**
    - **Signup Endpoint** (`POST /api/signup`):
      - Validates all required fields
      - Email format validation
      - Password strength validation (min 8 chars, uppercase, lowercase, number, special char)
      - Password confirmation matching
      - Checks for duplicate emails
+     - Hashes password with BCrypt before storage
      - Generates verification token
      - Sends verification email
      - Returns JSON response with status and message
@@ -41,6 +47,7 @@
    
    - **Login Endpoint** (`POST /api/login`):
      - Now uses email instead of username
+     - Verifies password using BCrypt password encoder
      - Checks if email is verified before allowing login
      - Returns user details on successful login
 
@@ -100,15 +107,23 @@ The system is configured to use an SMTP server with the following settings:
 6. System verifies token and marks account as verified
 7. User can now log in with email and password
 
-## Security Notes
+## Security Features
 
-⚠️ **Important**: The current implementation stores passwords in plain text. For production, you MUST:
-- Implement password hashing (BCrypt recommended)
-- Add CSRF protection
-- Implement rate limiting
-- Add session management/JWT tokens
-- Use HTTPS
+✅ **Implemented Security Measures**:
+- **BCrypt Password Hashing**: All passwords are hashed with BCrypt (work factor: 10) before storage
+- **Automatic Password Migration**: Legacy plain text passwords are automatically migrated to BCrypt on startup
+- **Email Verification**: 24-hour token expiration for account verification
+- **Password Strength Validation**: Enforced minimum requirements (see below)
+- **Secure Password Storage**: Passwords are never stored in plain text
+
+⚠️ **Production Hardening Recommendations**:
+- Add CSRF protection for state-changing operations
+- Implement rate limiting to prevent brute force attacks
+- Add session management/JWT tokens for authenticated endpoints
+- Use HTTPS only
 - Implement password reset functionality
+- Add account lockout after failed login attempts
+- Enable Spring Security for all endpoints (currently permissive)
 
 ## Testing
 
@@ -125,10 +140,12 @@ To test the implementation:
 ### Backend
 - `pom.xml` - Added mail dependency
 - `application.properties` - Added SMTP configuration
-- `User.java` - Updated entity
+- `User.java` - Updated entity with verification fields and SSO support
 - `UserRepository.java` - Updated to use email
-- `EmailService.java` - New service for sending emails
-- `AuthController.java` - Enhanced with validation and verification
+- `EmailService.java` - New service for sending emails with dynamic configuration
+- `AuthController.java` - Enhanced with validation, verification, and BCrypt password hashing
+- `SecurityConfig.java` - Added BCryptPasswordEncoder bean
+- `PasswordMigrationService.java` - New service for automatic password migration
 
 ### Frontend
 - `Signup.jsx` - Complete rewrite with validation
